@@ -21,7 +21,6 @@ def disconnect(app):
    subprocess.run(["nordlayer", "disconnect"])
    app.notify("Disconnected", title)
 
-
 def restart(app):
     subprocess.run([
         "systemctl", "restart", "nordlayer.service",
@@ -34,14 +33,12 @@ def status(app):
     if cmd.returncode == 0:
         app.notify(cmd.stdout, title)
 
-
 def gateway(app, item):
     id = get_id(basedir + '/ids.json', str(item))
     cmd = subprocess.run(["nordlayer", "connect", str(id)])
     if cmd.returncode == 0:
         app.notify("Connected in " + str(item), title)
         
-
 def main():
 
     app_menu = [
@@ -52,7 +49,6 @@ def main():
         pystray.Menu.SEPARATOR,
         pystray.MenuItem(text='Exit', action=on_exit)
     ]
-
 
     with open(basedir + '/ids.json', 'r') as ids_file:
         ids = json.load(ids_file)

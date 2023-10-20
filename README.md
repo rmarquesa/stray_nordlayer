@@ -9,8 +9,8 @@ Create a file stray_nordlayer.desktop in `/usr/share/applications` - Replace `yo
 ```bash
 [Desktop Entry]
 Version=1.0
-Name=Nordlayer Stray
-Comment=GUI Interface for Nordlayer Linux
+Name=Nordlayer System Tray
+Comment=Nordlayer System Tray for Linux
 Exec=nohup python3 your_path/stray_nordlayer.py > /tmp/stray_nordlayer.log 2>&1 &
 Icon=your_path/ico.png
 Terminal=false
