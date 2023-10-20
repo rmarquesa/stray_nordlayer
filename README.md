@@ -53,3 +53,9 @@ Categories=Applications;
 5. **Images**: Have the images ready for the system tray icon. The code expects an image file. Replace `"path_to_your_image.png"` with the actual image path when running the code.
 
 After setting up the required dependencies and ensuring you have the image file, you can run the provided Python code. Don't forget to replace `"path_to_your_image.png"` with the actual path to your image when executing the code.
+
+# Next steps
+
+1. Create a .deb to build a single package
+
+2. Publish in Ubuntu Store
