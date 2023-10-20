@@ -18,26 +18,36 @@ def on_exit(app):
     app.stop()
 
 def disconnect(app):
-   subprocess.run(["nordlayer", "disconnect"])
-   app.notify("Disconnected", title)
+    cmd = subprocess.run(["nordlayer", "disconnect"])
+    if cmd.returncode == 0:
+        app.notify("Disconnected", title)
+    else:
+        app.notify("Failed to try disconnect", title)
 
 def restart(app):
-    subprocess.run([
+    cmd = subprocess.run([
         "systemctl", "restart", "nordlayer.service",
         "systemctl", "restart", "nordlayer.socket"
     ])
-    app.notify("Restarted", title)
+    if cmd.returncode == 0:
+        app.notify("Restarted", title)
+    else:
+        app.notify("Failed to try restart", title)
 
 def status(app):
     cmd = subprocess.run(["nordlayer", "status", "--silent"], stdout=subprocess.PIPE, text=True)
     if cmd.returncode == 0:
         app.notify(cmd.stdout, title)
+    else:
+        app.notify("Failed to get status", title)
 
 def gateway(app, item):
     id = get_id(basedir + '/ids.json', str(item))
     cmd = subprocess.run(["nordlayer", "connect", str(id)])
     if cmd.returncode == 0:
         app.notify("Connected in " + str(item), title)
+    else:
+        app.notify("Failed to try connect", title)
         
 def main():
 
