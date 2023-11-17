@@ -1,3 +1,5 @@
+## ⚠ It's an unofficial tool
+
 ## How to use
 
 1. **IDs**: add your ids in `ids.json` file
